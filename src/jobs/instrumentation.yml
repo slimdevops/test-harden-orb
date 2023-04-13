@@ -18,7 +18,8 @@ steps:
   - setup-dependencies
   - run:
       name: Parse Image
-      command: imageName=$(scripts/parseimage << parameters.sourceConnector >> << parameters.sourceImage >>)
+      command: |
+        imageName=$(scripts/parseimage << parameters.sourceConnector >> << parameters.sourceImage >>)
   - cli-instrument:
       sourceConnector: $imageName
       sourceImage: $imageName

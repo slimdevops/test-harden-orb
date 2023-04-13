@@ -1,5 +1,4 @@
 #!/bin/bash
-SOURCE_CONNECTOR_ID="dockerhub.public"
 BASEIMAGE="${SOURCEIMAGE}"
 
 

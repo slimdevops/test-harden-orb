@@ -1,12 +1,42 @@
 #!/bin/bash
+SOURCE_CONNECTOR_ID="${SOURCECONNECTOR}"
 BASEIMAGE="${SOURCEIMAGE}"
 
+string="${SOURCECONNECTOR}/${SOURCEIMAGE}"
+# Call the shell script and pass input arguments
+output=$(./example.sh $input1 $input2)
+
+match=$(echo "${string}" | grep -oP '^(?:([^/]+)/)?(?:([^/]+)/)?([^@:/]+)(?:[@:](.+))?$')
+
+IFS='/' 
+read -r -a parts <<< "$match"
 
 
+namespace=${parts[1]}
+repository=${parts[2]}
 
-PROJECT_IMAGE_INSTRUMENTED="${BASEIMAGE}.instrumented"
-PROJECT_IMAGE_SLIMMED="${BASEIMAGE}.slimxx"
-BASEIMAGE="${SOURCEIMAGE}"
+if [ -z "$repository" ]; then
+  repository="${namespace}"
+  namespace="library"
+fi
+
+if echo "$repository" | grep -q ":"; then
+  IFS=':' read -ra arr <<< "$repository"
+  tag=${arr[1]}
+  repository=${arr[0]}
+else
+  tag="latest"
+fi
+
+
+if [ -z "$namespace" ]; then
+  namespace="library"
+fi
+
+
+PROJECT_IMAGE_INSTRUMENTED="${namespace}/${repository}:${tag}.instrumented"
+PROJECT_IMAGE_SLIMMED="${namespace}/${repository}:${tag}.slimxx"
+BASEIMAGE="${namespace}/${repository}:${tag}"
 IMAGE_PLATFORM="linux/amd64"
 TARGET_CONNECTOR_ID="${CONNECTOR_ID}"
 

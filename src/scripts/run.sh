@@ -1,8 +1,36 @@
 #!/bin/bash
-BASEIMAGE="${SOURCEIMAGE}"
+string="dockerhub.public/${SOURCEIMAGE}"
+
+match=$(echo "${string}" | grep -oP '^(?:([^/]+)/)?(?:([^/]+)/)?([^@:/]+)(?:[@:](.+))?$')
+
+IFS='/' 
+read -r -a parts <<< "$match"
 
 
-IMAGE="${BASEIMAGE}.instrumented"
+namespace=${parts[1]}
+repository=${parts[2]}
+
+if [ -z "$repository" ]; then
+  repository="${namespace}"
+  namespace="library"
+fi
+
+if echo "$repository" | grep -q ":"; then
+  IFS=':' read -ra arr <<< "$repository"
+  tag=${arr[1]}
+  repository=${arr[0]}
+else
+  tag="latest"
+fi
+
+
+
+
+if [ -z "$namespace" ]; then
+  namespace="library"
+fi
+
+IMAGE="${namespace}/${repository}:${tag}.instrumented"
 
 echo "$IMAGE"
 docker pull "$IMAGE"

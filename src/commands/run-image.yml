@@ -11,5 +11,4 @@ steps:
       name: RUN INSTRUMENTED IMAGE
       environment:
         SOURCEIMAGE: << parameters.sourceImage >>
-        PARSEIMAGE: <<include(scripts/parseimage.sh)>>
       command: <<include(scripts/run.sh)>>

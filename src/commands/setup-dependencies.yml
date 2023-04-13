@@ -1,0 +1,9 @@
+description: >
+  This command echos "Hello World" using file inclusion.
+# What will this command do?
+# Descriptions should be short, simple, and clear.
+
+steps:
+  - run:
+      name: Setup Dependencies
+      command: <<include(scripts/setup-dependencies.sh)>>

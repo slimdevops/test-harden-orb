@@ -1,0 +1,16 @@
+description: >
+  Sample description
+# What will this job do?
+
+docker:
+  - image: cimg/base:current
+
+steps:
+  - checkout
+  - setup-dependencies
+  - attach_workspace:
+      at: .
+  - run:
+      name: Import ENV
+      command: cat bash.env >> $BASH_ENV
+  - cli-harden

@@ -6,8 +6,15 @@ description: >
 usage:
   version: 2.1
   orbs:
-    <orb-name>: <namespace>/<orb-name>@1.2.3
+    slim-harden-orb: slimdevops/test-harden-orb@0.0.1
   workflows:
     use-my-orb:
       jobs:
-        - <orb-name>/<job-name>
+        - slim-harden-orb/instrumentation:
+            name: Instrumentation
+            sourceConnector: dockerhub.public
+            sourceImage: << namespace/repository:tag >>
+        - slim-harden-orb/hardening:
+            name: Hardening
+            requires:
+              - Instrumentation

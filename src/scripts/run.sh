@@ -3,7 +3,7 @@ SOURCE_CONNECTOR_ID="dockerhub.public"
 BASEIMAGE="${SOURCEIMAGE}"
 
 # Call the shell script and pass input arguments
-imageName=$(./parseimage.sh "$SOURCE_CONNECTOR_ID" "$BASEIMAGE")
+imageName=$("parseimage.sh" "$SOURCE_CONNECTOR_ID" "$BASEIMAGE")
 
 IMAGE="${imageName}.instrumented"
 

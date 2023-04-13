@@ -31,6 +31,8 @@ if [ -z "$namespace" ]; then
 fi
 
 IMAGE="${namespace}/${repository}:${tag}.instrumented"
+
+echo "$IMAGE"
 docker pull "$IMAGE"
 
 eval "docker run -d --cap-add ALL --user root --name my-orb-project -p 9001:9001 $IMAGE"

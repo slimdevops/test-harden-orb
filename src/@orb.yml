@@ -1,7 +1,7 @@
 version: 2.1
 
 description: >
-  The test-harden-orb is designed to enhance the security of your containerized 
+  The test-harden-orb is designed to enhance the security of your containerized
   applications by implementing best practices for container hardening.
 
 # This information will be displayed in the orb registry and is not mandatory.

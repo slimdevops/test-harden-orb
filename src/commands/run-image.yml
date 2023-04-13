@@ -2,8 +2,13 @@ description: >
   This command echos "Hello World" using file inclusion.
 # What will this command do?
 # Descriptions should be short, simple, and clear.
-
+parameters:
+  sourceImage:
+    type: string
+    description: "Image to Process"
 steps:
   - run:
       name: RUN INSTRUMENTED IMAGE
+      environment:
+        SOURCEIMAGE: << parameters.sourceImage >>
       command: <<include(scripts/run.sh)>>

@@ -5,10 +5,10 @@ description: >
 parameters:
   sourceConnector:
     type: string
-    description: "Hello to whom?"
+    description: "Source Connector"
   sourceImage:
     type: string
-    description: "Hello to whom?"
+    description: "Image to Process"
 steps:
   - run:
       name: INSTRUMENTATION

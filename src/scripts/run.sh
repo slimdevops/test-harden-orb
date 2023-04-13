@@ -1,5 +1,5 @@
 #!/bin/bash
-string="/${SOURCEIMAGE}"
+string="dockerhub.public/${SOURCEIMAGE}"
 
 match=$(echo "${string}" | grep -oP '^(?:([^/]+)/)?(?:([^/]+)/)?([^@:/]+)(?:[@:](.+))?$')
 

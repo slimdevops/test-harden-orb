@@ -3,8 +3,7 @@ SOURCE_CONNECTOR_ID="${SOURCECONNECTOR}"
 BASEIMAGE="${SOURCEIMAGE}"
 
 string="${SOURCECONNECTOR}/${SOURCEIMAGE}"
-# Call the shell script and pass input arguments
-output=$(./example.sh $input1 $input2)
+
 
 match=$(echo "${string}" | grep -oP '^(?:([^/]+)/)?(?:([^/]+)/)?([^@:/]+)(?:[@:](.+))?$')
 

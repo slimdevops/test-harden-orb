@@ -1,8 +1,4 @@
 #!/bin/bash
-
-
-BASEIMAGE="${SOURCEIMAGE}"
-
 string="${SOURCECONNECTOR}/${SOURCEIMAGE}"
 
 match=$(echo "${string}" | grep -oP '^(?:([^/]+)/)?(?:([^/]+)/)?([^@:/]+)(?:[@:](.+))?$')

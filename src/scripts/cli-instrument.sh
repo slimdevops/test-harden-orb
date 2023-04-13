@@ -3,42 +3,13 @@ SOURCE_CONNECTOR_ID="${SOURCECONNECTOR}"
 BASEIMAGE="${SOURCEIMAGE}"
 
 string="${SOURCECONNECTOR}/${SOURCEIMAGE}"
-
-match=$(echo "${string}" | grep -oP '^(?:([^/]+)/)?(?:([^/]+)/)?([^@:/]+)(?:[@:](.+))?$')
-
-IFS='/' 
-read -r -a parts <<< "$match"
+# Call the shell script and pass input arguments
+imageName= $(./parseimage.sh $SOURCE_CONNECTOR_ID $BASEIMAGE)
 
 
-namespace=${parts[1]}
-repository=${parts[2]}
-
-if [ -z "$repository" ]; then
-  repository="${namespace}"
-  namespace="library"
-fi
-
-if echo "$repository" | grep -q ":"; then
-  IFS=':' read -ra arr <<< "$repository"
-  tag=${arr[1]}
-  repository=${arr[0]}
-else
-  tag="latest"
-fi
-
-
-
-
-if [ -z "$namespace" ]; then
-  namespace="library"
-fi
-
-
-
-
-PROJECT_IMAGE_INSTRUMENTED="${namespace}/${repository}:${tag}.instrumented"
-PROJECT_IMAGE_SLIMMED="${namespace}/${repository}:${tag}.slimxx"
-BASEIMAGE="${namespace}/${repository}:${tag}"
+PROJECT_IMAGE_INSTRUMENTED="${imageName}.instrumented"
+PROJECT_IMAGE_SLIMMED="${imageName}.slimxx"
+BASEIMAGE="${imageName}"
 IMAGE_PLATFORM="linux/amd64"
 TARGET_CONNECTOR_ID="${CONNECTOR_ID}"
 

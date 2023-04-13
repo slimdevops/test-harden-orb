@@ -1,36 +1,11 @@
 #!/bin/bash
-string="dockerhub.public/${SOURCEIMAGE}"
+SOURCE_CONNECTOR_ID="dockerhub.public"
+BASEIMAGE="${SOURCEIMAGE}"
 
-match=$(echo "${string}" | grep -oP '^(?:([^/]+)/)?(?:([^/]+)/)?([^@:/]+)(?:[@:](.+))?$')
+# Call the shell script and pass input arguments
+imageName= $(./parseimage.sh $SOURCE_CONNECTOR_ID $BASEIMAGE)
 
-IFS='/' 
-read -r -a parts <<< "$match"
-
-
-namespace=${parts[1]}
-repository=${parts[2]}
-
-if [ -z "$repository" ]; then
-  repository="${namespace}"
-  namespace="library"
-fi
-
-if echo "$repository" | grep -q ":"; then
-  IFS=':' read -ra arr <<< "$repository"
-  tag=${arr[1]}
-  repository=${arr[0]}
-else
-  tag="latest"
-fi
-
-
-
-
-if [ -z "$namespace" ]; then
-  namespace="library"
-fi
-
-IMAGE="${namespace}/${repository}:${tag}.instrumented"
+IMAGE="${imageName}.instrumented"
 
 echo "$IMAGE"
 docker pull "$IMAGE"

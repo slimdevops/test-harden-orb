@@ -1,5 +1,5 @@
 #!/bin/bash
-string="${SOURCECONNECTOR}/${SOURCEIMAGE}"
+string="/${SOURCEIMAGE}"
 
 match=$(echo "${string}" | grep -oP '^(?:([^/]+)/)?(?:([^/]+)/)?([^@:/]+)(?:[@:](.+))?$')
 

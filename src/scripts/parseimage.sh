@@ -28,14 +28,9 @@ else
   tag="latest"
 fi
 
-
-
-
 if [ -z "$namespace" ]; then
   namespace="library"
 fi
-
-
 
 
 echo "${namespace}/${repository}:${tag}"

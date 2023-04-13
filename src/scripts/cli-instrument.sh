@@ -2,9 +2,8 @@
 SOURCE_CONNECTOR_ID="${SOURCECONNECTOR}"
 BASEIMAGE="${SOURCEIMAGE}"
 
-string="${SOURCECONNECTOR}/${SOURCEIMAGE}"
 # Call the shell script and pass input arguments
-imageName= $(./parseimage.sh $SOURCE_CONNECTOR_ID $BASEIMAGE)
+imageName=$(./parseimage.sh "$SOURCE_CONNECTOR_ID" "$BASEIMAGE")
 
 
 PROJECT_IMAGE_INSTRUMENTED="${imageName}.instrumented"

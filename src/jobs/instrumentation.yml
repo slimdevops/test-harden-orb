@@ -16,9 +16,12 @@ parameters:
 steps:
   - checkout
   - setup-dependencies
+  - run:
+      name: Parse Image
+      command: imageName=$(scripts/parseimage << parameters.sourceConnector >> << parameters.sourceImage >>)
   - cli-instrument:
-      sourceConnector: << parameters.sourceConnector >>
-      sourceImage: << parameters.sourceImage >>
+      sourceConnector: $imageName
+      sourceImage: $imageName
   - run:
       name: Export ENV
       command: cp $BASH_ENV bash.env
@@ -29,5 +32,5 @@ steps:
   - setup_remote_docker:
       version: 20.10.14
   - run-image:
-      sourceImage: << parameters.sourceImage >>
+      sourceImage: $imageName
   - cleanup

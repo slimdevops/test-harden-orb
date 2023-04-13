@@ -3,7 +3,7 @@ SOURCE_CONNECTOR_ID="${SOURCECONNECTOR}"
 BASEIMAGE="${SOURCEIMAGE}"
 
 # Call the shell script and pass input arguments
-imageName=$(./parseimage.sh "$SOURCE_CONNECTOR_ID" "$BASEIMAGE")
+imageName=$("${XRAY_REQUEST}" "$SOURCE_CONNECTOR_ID" "$BASEIMAGE")
 
 
 PROJECT_IMAGE_INSTRUMENTED="${imageName}.instrumented"

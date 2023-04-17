@@ -1,5 +1,5 @@
 description: >
-  This command echos "Hello World" using file inclusion.
+  This command setup all the dependencies required for the orb.
 # What will this command do?
 # Descriptions should be short, simple, and clear.
 

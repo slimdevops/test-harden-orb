@@ -1,5 +1,5 @@
 description: >
-  Sample example description.
+  This orb is used to Harden images.
 # Provide a use-case based example for using this orb.
 # Everything in the `usage` section will be displayed in the orb registry.
 # Comments are not retained.

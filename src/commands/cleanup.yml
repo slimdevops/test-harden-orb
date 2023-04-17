@@ -1,5 +1,5 @@
 description: >
-  This command echos "Hello World" using file inclusion.
+  This command is used to clear currently running containers.
 # What will this command do?
 # Descriptions should be short, simple, and clear.
 

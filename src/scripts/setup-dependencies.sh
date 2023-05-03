@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo "Install Slim.ai CLI"
-curl https://platform.slim.dev/.service/releases/slim/0.0.14-release | sh
+curl https://platform.slim.dev/.service/releases/slim/latest | sh
 
 echo "Install XML Utilities"
 sudo apt-get update -qq

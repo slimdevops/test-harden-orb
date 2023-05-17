@@ -46,7 +46,7 @@ log_output=$(slim instrument \
   --instrumented-image "$PROJECT_IMAGE_INSTRUMENTED" \
   --hardened-image-connector "$TARGET_CONNECTOR_ID" \
   --hardened-image "$PROJECT_IMAGE_SLIMMED" \
-  --timeout=20m \
+  --timeout=30m \
   "$BASEIMAGE" 2>&1 | tee /dev/stderr)
 
 workflow_id=$(echo "$log_output" | grep -Eo 'workflow id: [a-zA-Z0-9\.]+')

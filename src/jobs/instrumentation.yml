@@ -8,10 +8,10 @@ docker:
 parameters:
   sourceConnector:
     type: string
-    description: "Hello to whom?"
+    description: "Slim Saas Connector ID"
   sourceImage:
     type: string
-    description: "Hello to whom?"
+    description: "Container to instrument.eg: library/node:latest"
 
 steps:
   - checkout

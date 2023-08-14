@@ -12,7 +12,6 @@ usage:
       jobs:
         - slim-harden-orb/instrumentation:
             name: Instrumentation
-            sourceConnector: dockerhub.public
             sourceImage: << namespace/repository:tag >>
         - slim-harden-orb/hardening:
             name: Hardening

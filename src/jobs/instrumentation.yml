@@ -6,9 +6,6 @@ docker:
   - image: cimg/base:current
 
 parameters:
-  sourceConnector:
-    type: string
-    description: "Slim Saas Connector ID"
   sourceImage:
     type: string
     description: "Container to instrument.eg: library/node:latest"
@@ -17,7 +14,6 @@ steps:
   - checkout
   - setup-dependencies
   - cli-instrument:
-      sourceConnector: << parameters.sourceConnector >>
       sourceImage: << parameters.sourceImage >>
   - run:
       name: Export ENV

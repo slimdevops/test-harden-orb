@@ -3,9 +3,6 @@ description: >
 # What will this command do?
 # Descriptions should be short, simple, and clear.
 parameters:
-  sourceConnector:
-    type: string
-    description: "Source Connector"
   sourceImage:
     type: string
     description: "Image to Process"
@@ -13,6 +10,5 @@ steps:
   - run:
       name: INSTRUMENTATION
       environment:
-        SOURCECONNECTOR: << parameters.sourceConnector >>
         SOURCEIMAGE: << parameters.sourceImage >>
       command: <<include(scripts/cli-instrument.sh)>>

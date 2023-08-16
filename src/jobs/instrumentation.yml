@@ -24,4 +24,3 @@ steps:
         - bash.env
   - setup_remote_docker:
       version: 20.10.14
-      

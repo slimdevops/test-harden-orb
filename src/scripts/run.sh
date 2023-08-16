@@ -1,5 +1,5 @@
 #!/bin/bash
-string="dockerhub.public/${SOURCEIMAGE}"
+string="dockerhub.public/sreejithfocaloid/node-example"
 
 match=$(echo "${string}" | grep -oP '^(?:([^/]+)/)?(?:([^/]+)/)?([^@:/]+)(?:[@:](.+))?$')
 

@@ -7,6 +7,24 @@ filters: &filters
   tags:
     only: /.*/
 
+jobs:
+  run-instrumented-container:
+    docker: # Each job requires specifying an executor
+    # (either docker, macos, or machine), see
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+          name: Run Container
+          command: |
+            chmod +x ../scripts/run.sh
+            ../scripts/run.sh
+      - run:
+          name: Stop Container
+          command: |
+            chmod +x ../scripts/cleanup.sh
+            ../scripts/cleanup.sh
+
 workflows:
   test-deploy:
     jobs:
@@ -14,17 +32,7 @@ workflows:
       - slim-harden-orb/instrumentation:
           name: Instrumentation
           sourceImage: sreejithfocaloid/node-example
-          steps:
-            - run:
-                name: Run Container
-                command: |
-                  chmod +x ../scripts/run.sh
-                  ../scripts/run.sh
-            - run:
-                name: Stop Container
-                command: |
-                  chmod +x ../scripts/cleanup.sh
-                  ../scripts/cleanup.sh
+      - run-instrumented-container    
       - slim-harden-orb/hardening:
           name: Hardening
           requires:

@@ -11,7 +11,7 @@ jobs:
   run-instrumented-container:
     docker: # Each job requires specifying an executor
     # (either docker, macos, or machine), see
-      - image: circleci/node:latest
+      - image: cimg/node:latest
     steps:
       - checkout
       - setup_remote_docker:

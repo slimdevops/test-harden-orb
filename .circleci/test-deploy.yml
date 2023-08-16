@@ -32,11 +32,14 @@ workflows:
       - slim-harden-orb/instrumentation:
           name: Instrumentation
           sourceImage: sreejithfocaloid/node-example
-      - run-instrumented-container    
+      - run-instrumented-container
+          name: Run Instrumented
+          requires:
+            - Instrumentation    
       - slim-harden-orb/hardening:
           name: Hardening
           requires:
-            - Instrumentation
+            - Run Instrumented
       - orb-tools/pack:
           filters: *filters
       - orb-tools/publish:

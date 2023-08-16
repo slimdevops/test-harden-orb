@@ -17,13 +17,13 @@ jobs:
       - run:
           name: Run Container
           command: |
-            chmod +x ../scripts/run.sh
-            ../scripts/run.sh
+            chmod +x ../src/scripts/run.sh
+            ../src/scripts/run.sh
       - run:
           name: Stop Container
           command: |
-            chmod +x ../scripts/cleanup.sh
-            ../scripts/cleanup.sh
+            chmod +x ../src/scripts/cleanup.sh
+            ../src/scripts/cleanup.sh
 
 workflows:
   test-deploy:

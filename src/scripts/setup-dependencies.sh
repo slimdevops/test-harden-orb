@@ -14,7 +14,7 @@ echo "export PATH=$HOME/.slim/bin:$PATH" >> "$BASH_ENV"
 # echo "export PATH=~/.slim/bin:$PATH" >> ./.bashrc
 # source "$HOME/.bashrc"
 # echo "${HOME}/.slim/bin" >>$GITHUB_PATH
-slim config gen --save --token "${API_TOKEN}" --org "${ORGANIZATION_ID}"
+slim config gen --save --token "${SLIM_API_TOKEN}" --org "${SLIM_ORG_ID}"
 # echo "token: ${PORTAL0_API_TOKEN}"> ~/.config/slim/config
 # echo "default_org: ${PORTAL0_ORGANIZATION_ID}">> ~/.config/slim/config
 # echo "endpoint: https://api.dev-jb.saas.getslim.ai">> ~/.config/slim/config

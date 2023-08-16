@@ -1,5 +1,10 @@
 description: >
-  This orb is used to Harden images.
+  The slim-shield is designed to enhance the security of your containerized
+  applications by implementing best practices for container hardening.
+    The environment variables SOURCE_CONNECTOR_ID, TARGET_CONNECTOR_ID, SLIM_ORG_ID and SLIM_API_TOKEN must be set for this orb to work.
+    SOURCE_CONNECTOR_ID, TARGET_CONNECTOR_ID: You can find your ID in the "My Registries" section of the Slim Platform(Both can be same).
+    SLIM_ORG_ID: Your SLIM_ORG_ID can be located in the "Personal Information" section, specifically under "Organizations" in the Slim Platform.
+    SLIM_API_TOKEN: To obtain your SLIM_API_TOKEN, navigate to the "Personal Information" section in the Slim Platform and then proceed to the "Tokens" subsection.
 # Provide a use-case based example for using this orb.
 # Everything in the `usage` section will be displayed in the orb registry.
 # Comments are not retained.
